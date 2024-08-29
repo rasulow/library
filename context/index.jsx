@@ -20,7 +20,7 @@ export function AppWrapper({children}) {
     const [showMenu, setShowMenu] = useState(false)
     const [readBook, setReadBook] = useState(false)
     const [token, setToken] = useState(localStorage.getItem('token'))
-    const [count, setCount] = useState(0)
+    const [countLiked, setCountLiked] = useState(0)
     const [toggleSearch, setToggleSearch] = useState(false)
     // const [toggleGenre1, setToggleGenre1] = useState(false)
     // const [toggleGenre2, setToggleGenre2] = useState(false) 
@@ -43,7 +43,7 @@ export function AppWrapper({children}) {
         <AppContext.Provider value={
         {
             name,
-            count,
+            countLiked,
             token,
             toggleUp,
             toggleLeft,
@@ -75,7 +75,7 @@ export function AppWrapper({children}) {
             // toggleGenre16,
             setToggleSearch,
             setToken,
-            setCount,
+            setCountLiked,
             setName,
             setReadBook,
             setToggleUp,

@@ -3,15 +3,6 @@ import Link from "next/link"
 import Image from "next/image"
 import { useEffect, useState } from "react"
 import { useAppContext } from "../../../context"
-import {
-    Pagination,
-    PaginationContent,
-    PaginationEllipsis,
-    PaginationItem,
-    PaginationLink,
-    PaginationNext,
-    PaginationPrevious,
-  } from "@/components/ui/pagination"
 import axiosInstance from "@/utils/axiosInstance"
 
 const base_URL = 'http://10.10.73.31:4000'
@@ -149,6 +140,7 @@ const Author = ({params}) => {
         }
     }, [id]);
 
+    console.log(author)
     const allBooks = books.map(book => {
         return (
             <div className='flex items-center bg-white w-[280px] p-3 rounded-md'>
@@ -163,7 +155,7 @@ const Author = ({params}) => {
                 </div>
                 <div className="flex flex-col ml-[3px] px-[8px] h-[120px] w-[170px] justify-between">
                 <Link href={`/book/${book["id"]}`} className="font-custom-sans  whitespace-nowrap overflow-hidden text-ellipsis font-semibold text-[16px] leading-6 pb-6">
-                             { (book["title"]?.length > 16) ? book["title"].slice(0, 16) + '...' : book["title"] }
+                             { (book["title"]?.length > 16) ? book["title"].slice(0, 16).toLowerCase().charAt(0).toUpperCase() + book["title"].slice(0, 16).toLowerCase().slice(1) + '...' : book["title"] }
                         </Link>
                     <div>
                         <table className="table-auto  mt-3 w-full">
@@ -214,19 +206,18 @@ const Author = ({params}) => {
             </div>
         )
     })
-
     return (
         <div className={toggleLeft ? `flex flex-col mb-[40px] flex-1 ${toggleUp ? "mt-[85px]" : "mt-[30px]"}` : `flex-col flex-1 m-2 pb-[40px]   ${toggleUp ? "mt-[80px]" : "mt-[30px]"}`}>
             <div className="mx-[7px] max-h-[715px] flex flex-col items-center">  
                 <div className="flex flex-col mt-[5px] md:justify-center">
                     <div className='flex mt-[10px] items-center self-center'>
-                        <div className="h-[185px] w-[145px] overflow-hidden rounded-md">
+                        <div className="h-[185px] w-[145px] flex items-center overflow-hidden rounded-md">
                             <Image
                                 alt="check surat kitap"
-                                src={"/kitap.png"}
+                                src={author?.["results"] ? `${base_URL}${author?.["results"]?.[0]?.["author"]?.["get_image"] || ""}` : "/kitap.png"}
                                 height={185}
                                 width={145}
-                                className="object-cover object-center"
+                                className="object-cover object-center rounded-lg"
                             />
                         </div>
                         <div className="ml-[7px] mt-[7px] flex-1 px-[16px] h-[205px] ">

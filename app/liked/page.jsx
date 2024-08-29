@@ -151,6 +151,7 @@ const handlePageClick = (page) => {
     }
 }, [id]);
 
+
   const allBooks = books.map(book => {
     return (
         <div className='flex items-center bg-white w-[280px] p-3 rounded-md'>
@@ -165,7 +166,7 @@ const handlePageClick = (page) => {
             </div>
             <div className="flex flex-col ml-[3px] px-[8px] h-[120px] w-[170px]">
             <Link href={`/book/${book["book"]["id"]}`} className="font-custom-sans  whitespace-nowrap overflow-hidden text-ellipsis font-semibold text-[16px] leading-6 pb-6">
-                { (book["book"]["title"]?.length > 16) ? book["book"]["title"].slice(0, 16) + '...' : book["book"]["title"] }
+                { (book["book"]["title"]?.length > 16) ? book["book"]["title"].slice(0, 16).toLowerCase().charAt(0).toUpperCase() + book["book"]["title"].slice(0, 16).toLowerCase().slice(1) + '...' : book["book"]["title"] }
                         </Link>
                 <table className="table-auto  mt-3 w-full">
                 <tbody>

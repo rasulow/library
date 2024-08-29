@@ -113,7 +113,7 @@ const handlePageClick = (page) => {
                 <div className="h-[170px] w-[145px] flex overflow-hidden rounded-md">
                     <Image
                         alt="check surat kitap"
-                        src={"/kitap.png"}
+                        src={`/genre/${genre["id"]}.png`}
                         height={170}
                         width={145}
                         className="object-cover object-center"
@@ -134,29 +134,6 @@ const handlePageClick = (page) => {
     return (
         <div className={toggleLeft ? `flex-col flex-1 ${toggleUp ? "mt-[85px]" : "mt-[30px]"}` : `flex-col flex-1 m-2   ${toggleUp ? "mt-[80px]" : "mt-[30px]"}`}>
             <div className="mx-[7px] max-h-[715px] flex flex-col items-center pb-[60px]">  
-                <div className = "flex p-2 h-[40px] mt-[25px]  items-center">
-                    <div className="flex justify-center mt-5">
-                        <button
-                        className={`bg-gray-200 text-gray-700 px-4 py-2 mx-1 ${
-                            currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''
-                        }`}
-                        onClick={handlePrevPage}
-                        disabled={currentPage === 1}
-                        >
-                        Öňki
-                        </button>
-                        {renderPageButtons()}
-                        <button
-                        className={`bg-gray-200 text-gray-700 px-4 py-2 mx-1 ${
-                            currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : ''
-                        }`}
-                        onClick={handleNextPage}
-                        disabled={currentPage === totalPages}
-                        >
-                        Indiki
-                        </button>
-                    </div>
-                </div> 
                 <div className='grid grid-cols-2 md:grid-cols-4 sm:grid-cols-3  lg:grid-cols-5 xl:grid-cols-6  gap-4 mt-[40px]'>
                     {allGenres}
                 </div>

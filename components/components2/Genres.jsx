@@ -51,7 +51,25 @@ const Genres = () => {
           className='font-semibold'
           onClick={()=> setToggleLeft(false)}
       >
+      <li
+          key={genre["id"]}
+          className={`
+            flex
+            border-b-[1px]
+            border-white
+            items-center
+            p-3
+            text-[14px]
+            bg-gray-100
+            dark:bg-gray-800
+            hover:bg-gray-200
+            dark:hover:bg-gray-700
+            transition-colors
+            duration-300
+          `}
+        >
           {genre.name}
+      </li>
       </Link>
     )
   })
@@ -102,8 +120,17 @@ const Genres = () => {
       //   </Accordion>
       // </div>
       <div>
-        <div className={toggleUp ? "flex flex-col h-[80vh] shadow-inner p-2 border-[1px] border-slate-600 bg-white mr-[8px] mt-[10px] overflow-y-scroll" : "flex flex-col h-[88vh] shadow-inner p-2 border-[1px] border-slate-600 bg-white mr-[8px] mt-[10px] overflow-y-scroll"} >
+        <div className={toggleUp ? "flex flex-col h-[80vh] shadow-inner p-[1px] border-[1px] border-slate-600 bg-white mr-[8px] mt-[10px] overflow-y-scroll" : "flex flex-col h-[88vh] shadow-inner p-[1px] border-[1px] pr-[3px] border-slate-600 bg-white mr-[8px] mt-[10px] overflow-y-scroll"} >
+        <ul
+                className={`
+                text-gray-800
+                dark:text-gray-200
+                pl-[1px]
+                pt-[1px]
+                `}
+            >
             {allGenres}
+        </ul>
         </div>
     </div>
   )

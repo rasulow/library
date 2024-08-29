@@ -23,8 +23,8 @@ const Nav = () => {
     // setToggleSideBar,
     token,
     setToken,
-    count,
-    setCount,
+    countLiked,
+    setCountLiked,
   } = useAppContext();
 
 
@@ -38,7 +38,7 @@ const Nav = () => {
     setTimeout(() => {
       setBackgroundColor('bg-slate-400');
     }, 2000);
-}, [count]
+}, [countLiked]
 )
 
 
@@ -55,7 +55,7 @@ const Nav = () => {
                 headers: headers
                 }
         );
-        setCount(response.data.count);
+        setCountLiked(response.data.count);
         console.log(response.data.count)
     } catch (err) {
         setError(err);
@@ -294,9 +294,9 @@ const Nav = () => {
                       width={40}
                       height={40}
                     />
-                    <div className={`flex absolute top-[25px] text-center left-[25px] ${backgroundColor} rounded-full w-[22px] h-[22px] pl-[2px] text-[17px]  items-cente`}>
+                    <div className={`flex absolute top-[25px] text-center left-[25px] ${backgroundColor} rounded-full w-[25px] h-[25px] pl-[6px] text-[14px] font-custom-sans pt-[2px] font-semibold  items-cente`}>
                       <p>
-                        {count}
+                        {countLiked}
                       </p>
                     </div>
                   </Link>

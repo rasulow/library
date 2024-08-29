@@ -78,8 +78,8 @@ const Page = ({params}) => {
                         <div className="overflow-hidden object-cover object-center bg-white h-[400px] w-[300px] flex items-center justify-center rounded-md md:mt-[18px]">
                         <Image 
                             alt="Umumy kitap surat"
-                            height={300}
-                            width={230}
+                            height={390}
+                            width={270}
                             src={book["get_image"] ? `${base_URL}${book["get_image"]}` : "/kitap.png"}
                             className="object-cover object-center overflow-hidden"
                     />
@@ -91,15 +91,18 @@ const Page = ({params}) => {
                         Ýükle ýa-da oka
                         </span>
                     </button>
-                    {/* <Link 
+                    <Link 
                         className="flex flex-col items-center" 
-                        href={book["get_book_ext"] === ".pdf" ? `/bookReaderPDF${book["get_book"]}` : `bookReaderEPUB${book["get_book"]}` }
+                        href={{ 
+                            pathname : book["get_book_ext"] === ".pdf" ? `bookReaderPDF${book["get_book"]}` :  `bookReaderEPUB${book["get_book"]}`
+                    
+                    }}
                     >
                         <i class="fas fa-book text-blue-500 text-[20px] mb-[2px]"></i>
                         <span className="font-bold text-[14px] text-blue-500">
                         Kitaby oka
                         </span>
-                    </Link> */}
+                    </Link>
                     </div>
                 </div>
                 <div className="flex flex-col mb-[180px] md:ml-[40px]">
@@ -118,7 +121,7 @@ const Page = ({params}) => {
                                             DILI:
                                         </TableCell>
                                         <TableCell className='custom-table-td-main-book-1'>
-                                        {book["author"] && (<span>{book["author"]["biography"]}</span>)}
+                                        {book?.["language"]}
                                         </TableCell>
                                     </TableRow>
                                     <TableRow>

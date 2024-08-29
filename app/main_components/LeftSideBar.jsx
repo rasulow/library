@@ -23,12 +23,62 @@ const LeftSideBar = () => {
     toggleUp,
     setToggleSideBar,
   } = useAppContext();
+
+  const lists = [{id:"2", name:"programmirleme"}, {id:"13", name:"Çeper eser"}, {id:"18", name:"Hukuk"}, {id:"19", name:"Taryh"}, {id:"20", name:"Kiberhowpsuzlyk"}]
+
+  const allPart = lists.map(book=> {
+    console.log(book)
+    return (
+      <div className="flex items-center">
+      <div className="flex  w-[75px] h-[75px] p-1  overflow-hidden rounded-full">
+                      <Image 
+                        alt="group image"
+                        height={75}
+                        width={75}
+                        src={`/genre/${book.id}.png`}
+                        className="rounded-full object-cover object-center"
+                      />
+                    </div>
+                    <div className="flex flex-col ml-[7px]">
+                      <Link 
+                        className="font-custom-sans font-bold text-[20px]"
+                        href={`/genre/${book.id}`}
+                        >
+                        {book.name}
+                      </Link>
+                    </div>
+                  </div>
+    )
+  })
+
   return (
     <div className={toggleLeft ? `fixed shadow-2xl z-10 ${toggleSideBar==1 ? "w-[277px]" : "w-[300px]"} shadow-xl border-r-[1px] border-slate-300 pl-2 h-screen left-0 flex-col bg-slate-200 ${toggleUp ? "mt-[74px]" : "mt-[23px]"}` : "hidden"}>  
-            <ul className="flex h-[30px] bg-slate-200 ml-[6px] pr-2 mt-[10px]">
+            <ul className="flex h-[30px] bg-slate-200 ml-[14px] pr-2 mt-[10px]">
               <li> 
                 <Link 
-                  className="bg-transparent border-2 border-blue-500 hover:bg-blue-500 text-blue-500 hover:text-white font-semibold px-2 py-[1px] rounded-tl-lg rounded-bl-lg shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110 text-[14px]"
+                  className="
+                    border-r-[1px]
+                    border-white
+                    bg-indigo-600
+                    hover:bg-indigo-700
+                    text-white
+                    text-[14px]
+                    font-semibold
+                    py-[5px] px-2
+                    rounded-l-xl
+                    shadow-lg
+                    hover:shadow-xl
+                    transition-all
+                    duration-300
+                    ease-in-out
+                    transform
+                    hover:-translate-y-1
+                    hover:scale-110
+                    focus:outline-none
+                    focus:ring-2
+                    focus:ring-indigo-500
+                    focus:ring-offset-2
+                  "
                   onClick={() => setToggleSideBar(1)}
                   href={"/author"}
                 >
@@ -47,28 +97,91 @@ const LeftSideBar = () => {
               <li>
                 <Link 
                   href="/genre"
-                  className="bg-transparent border-2 border-blue-500 hover:bg-blue-500 text-blue-500 hover:text-white font-semibold px-2 py-[1px] shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110 text-[14px]"
+                  className="
+                    border-r-[1px]
+                    border-white
+                    bg-indigo-600
+                    hover:bg-indigo-700
+                    text-white
+                    text-[14px]
+                    font-semibold
+                    py-[5px] px-2
+                    shadow-lg
+                    hover:shadow-xl
+                    transition-all
+                    duration-300
+                    ease-in-out
+                    transform
+                    hover:-translate-y-1
+                    hover:scale-110
+                    focus:outline-none
+                    focus:ring-2
+                    focus:ring-indigo-500
+                    focus:ring-offset-2
+                  "
                   onClick={() => setToggleSideBar(3)}
                 >
-                  genre
+                  Žanr
                 </Link>
               </li>
               <li>
                 <Link
                   href="/" 
-                  className="bg-transparent border-2 border-blue-500 hover:bg-blue-500 text-blue-500 hover:text-white font-semibold px-2 py-[1px] shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110 text-[14px]"
+                  className="
+                    border-r-[1px]
+                    border-white
+                    bg-indigo-600
+                    hover:bg-indigo-700
+                    text-white
+                    text-[14px]
+                    font-semibold
+                    py-[5px] px-2
+                    shadow-lg
+                    hover:shadow-xl
+                    transition-all
+                    duration-300
+                    ease-in-out
+                    transform
+                    hover:-translate-y-1
+                    hover:scale-110
+                    focus:outline-none
+                    focus:ring-2
+                    focus:ring-indigo-500
+                    focus:ring-offset-2
+                  "
                   onClick={() => setToggleSideBar(4)}
                 >
-                    poisk
+                    gözleg
                 </Link>
               </li>
               <li>
                 <Link 
-                  href={"/group"}
-                  className="bg-transparent border-2 border-blue-500 hover:bg-blue-500 text-blue-500 hover:text-white font-semibold px-2 py-[1px] rounded-tr-lg rounded-br-lg shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110 text-[14px]"
+                  href={"/genre"}
+                  className="
+                    bg-indigo-600
+                    hover:bg-indigo-700
+                    text-white
+                    text-[14px]
+                    font-semibold
+                    rounded-r-xl
+                    py-[5px] px-2
+                    shadow-lg
+                    hover:shadow-xl
+                    transition-all
+                    duration-300
+                    ease-in-out
+                    transform
+                    hover:-translate-y-1
+                    hover:scale-110
+                    focus:outline-none
+                    focus:ring-2
+                    focus:ring-indigo-500
+                    focus:ring-offset-2
+                    
+                  "
                   onClick={() => setToggleSideBar(5)}
                 >
-                    gruppy
+                    bölüm
                 </Link>
               </li>
             </ul>
@@ -110,28 +223,7 @@ const LeftSideBar = () => {
             { toggleSideBar == 5 && (
               <div>
                 <div className={toggleUp ? "h-[78vh] shadow-inner p-2 bg-slate-200 mr-[8px] mt-[10px] overflow-y-scroll" : "h-[85vh] shadow-inner p-2 bg-slate-200 mr-[8px] mt-[10px] overflow-y-scroll"} >
-                  <div className="flex items-center">
-                    <div className="w-[90px] p-1  overflow-hidden rounded-full">
-                      <Image 
-                        alt="group image"
-                        height={75}
-                        width={75}
-                        src="/sci_fi_2.png"
-                        className="rounded-full object-cover object-center"
-                      />
-                    </div>
-                    <div className="flex flex-col ml-[7px]">
-                      <Link 
-                        className="font-custom-sans font-bold text-[20px]"
-                        href={"/group"}
-                        >
-                        Fizika
-                      </Link>
-                      <p className="font-custom-sans font-semibold text-gray-500">
-                        0 kitap bar
-                      </p>
-                    </div>
-                  </div>
+                  {allPart}
                 </div>
              </div>
             )}

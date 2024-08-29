@@ -24,7 +24,9 @@ const Home = () => {
     const {
         toggleLeft,
         toggleUp,
-        toggleSearch
+        toggleSearch,
+        countLiked,
+        setCountLiked,
     } = useAppContext();
     const [books, setBooks] = useState([]);
     const [count, setCount] = useState(0);
@@ -208,7 +210,7 @@ const Home = () => {
                 <div className="flex flex-col ml-[3px] px-[8px] h-[120px] w-[170px] justify-between">
                     <div>
                         <Link href={`/book/${book["id"]}`} className="font-custom-sans w-[100px] whitespace-nowrap overflow-hidden leading-6 text-ellipsis font-semibold text-[16px] ">
-                             { (book["title"]?.length > 16) ? book["title"].slice(0, 16) + '...' : book["title"] }
+                             { (book["title"]?.length > 16) ? book["title"].slice(0, 16).toLowerCase().charAt(0).toUpperCase() + book["title"].slice(0, 16).toLowerCase().slice(1) + '...' : book["title"] }
                         </Link>
                         <table className="table-auto  mt-3 w-full h-[50px] overflow-hidden">
                         <tbody>
@@ -241,7 +243,10 @@ const Home = () => {
                                 </button>
                             </div> */}
                         <div className="flex items-center">
-                            <button className="mb-[2px] mr-[3px]" onClick={() => setId(book["id"])}>
+                            <button className="mb-[2px] mr-[3px]" onClick={() => {
+                                setId(book["id"])
+                                setCountLiked(count=>count+1)
+                                }}>
                                 <Image  
                                     src="/Image/liked.png"
                                     alt="liked things"

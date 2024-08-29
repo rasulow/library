@@ -151,7 +151,6 @@ const Genre = ({params}) => {
         }
     }, [id]);
 
-    
     const allBooks = books.map(book => {
         return (
             <div className='flex items-center bg-white w-[280px] p-3 rounded-md'>
@@ -166,7 +165,7 @@ const Genre = ({params}) => {
                 </div>
                 <div className="flex flex-col ml-[3px] px-[8px] h-[120px] w-[170px]">
                 <Link href={`/book/${book["id"]}`} className="font-custom-sans  whitespace-nowrap overflow-hidden text-ellipsis font-semibold text-[16px] leading-6 pb-6">
-                             { (book["title"]?.length > 16) ? book["title"].slice(0, 16) + '...' : book["title"] }
+                             { (book["title"]?.length > 14) ? book["title"].slice(0, 16).toLowerCase().charAt(0).toUpperCase() + book["title"].slice(0, 16).toLowerCase().slice(1) + '...' : book["title"] }
                         </Link>
                     <table className="table-auto  mt-3 w-full">
                     <tbody>
@@ -222,10 +221,10 @@ const Genre = ({params}) => {
             <div className="flex mx-[7px] max-h-[715px] flex-col ">  
                 <div className="flex flex-col mt-[5px] md:justify-center items-center">
                     <div className='flex flex-col mt-[20px] items-center self-center'>
-                        <div className="h-[185px] w-[145px] overflow-hidden rounded-md">
+                        <div className="h-[185px] w-[145px] flex overflow-hidden rounded-md">
                             <Image
                                 alt="check surat kitap"
-                                src={"/kitap.png"}
+                                src={`/genre/${params.id}.png`}
                                 height={185}
                                 width={145}
                                 className="object-cover object-center"
@@ -269,7 +268,7 @@ const Genre = ({params}) => {
                 >
                     {allBooks}
                 </div> 
-                <p className="text-slate-200">.</p>
+                <p className="text-slate-200 flex w-full">.</p>
             </div>
         </div>
             
